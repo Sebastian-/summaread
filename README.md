@@ -1,0 +1,5 @@
+# Union
+
+## Elevator Pitch
+
+Union is an application which helps people quickly discover opportunities to connect with each other. Friendships are often formed through common interests and activities, but the process of discovering and sharing that information with other people can take a long time, or may never happen at all in large group settings. Union is an attempt to facilitate friendships by finding the intersection between people and their interests as quickly as possible. Upon creating an account, users list some activities they enjoy, and then join groups they commonly interact with (like a group of close friends, or their workplace). By keeping track of everyone's interests, the application can easily display potential friends who would like to join in on your activity. This could serve as a great way to integrate people into existing groups (like a new hire into the workplace), or as a quick way to introduce large groups of people to each other (like an orientation day at school).
