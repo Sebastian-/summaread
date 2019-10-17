@@ -1,22 +1,22 @@
-# Union
+# Pageturns
 
 ## Elevator Pitch
 
-Union (working title) is an application which helps people quickly discover opportunities to connect with each other. Friendships are often formed through common interests and activities, but the process of discovering and sharing that information with other people can take a long time, or may never happen at all in large group settings. Union is an attempt to facilitate friendships by finding the intersection between people and their interests as quickly as possible. Upon creating an account, users list some activities they enjoy, and then join groups they commonly interact with (like a group of close friends, or their workplace). By keeping track of everyone's interests, the application can easily display potential friends who would like to join in on their activity. This could serve as a great way to integrate people into existing groups (like a new hire into the workplace), or as a quick way to introduce large groups of people to each other (like an orientation day at school).
+Pageturns is an application which helps people plan and manage their reading. It will serve as a place for users to log their progress and make notes on individual reading sessions. Keeping track of your reading will motivate you to finish and reinforce your understanding/memory. The application can compile statistics based on your reading, and provide estimates of how long a book will take to read based on your reading rate.
 
 ## Requirements
 
 ### Functional Requirements - activities performed by the system
-* Enables users to share their interests and activities
-* Facilitates the formation of groups of people
-* Signals common interests to people in the same group
-
+* Users should be able to create an account to manage their reading log
+* A user's reading log tracks and displays their reading progress
+* Individual reading sessions can be recorded with information such as time spent, pages read, and notes
+* New books can be added and tracked through the reading log
+* Statistics such as total pages/books read and reading speed are displayed for each user
 
 ### Non-functional Requirements
 
 #### Business - policies
-
-#### Technical - platform and system constraints
+* If ever monetized, the application should be able to limit the number of books and reading sessions which free users can track
 
 #### Performance - workload and response needs
 * Ability to handle spikes of activity over weekends and other peaks of leisure time
@@ -28,4 +28,4 @@ Union (working title) is an application which helps people quickly discover oppo
 * User data should be recoverable/backed-up
 
 #### Security - amount needed, user permissions, encryption
-* Users should only be able to view what others have made public to their group
+* Users should have exclusive access their reading log
