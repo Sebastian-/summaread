@@ -47,8 +47,7 @@ Pageturns is an application which helps you plan and manage your reading. Use it
   * Persistence of reading session data for each user
 
 * Reading Log View
-  * Display reading progress (percentage complete) for each book
-
+  * Display reading progress (percentage complete/last page read) for each book
 
 ### Nice-To-have
 
@@ -70,3 +69,6 @@ Pageturns is an application which helps you plan and manage your reading. Use it
   * Average reading time per user
   * Average number of books read 
 
+* Note-taking features
+  * Ability to export all notes made on a book to a single file
+  * Specialized note templates based on genre of book
