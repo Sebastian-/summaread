@@ -72,3 +72,8 @@ Pageturns is an application which helps you plan and manage your reading. Use it
 * Note-taking features
   * Ability to export all notes made on a book to a single file
   * Specialized note templates based on genre of book
+
+
+## Entity Relationship Diagram
+
+![PageTurns Entity Relationship Diagram](pageturnsERD.png "Title")
