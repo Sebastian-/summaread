@@ -6,7 +6,7 @@ Pageturns is an application which helps you plan and manage your reading. Use it
 
 ## Requirements
 
-### Functional Requirements - activities performed by the system
+### Functional Requirements
 * Users should be able to create an account to manage their profile and reading log
 * A user's reading log tracks and displays their reading progress
 * Users can set reading goals and have the application suggest a suitable pace to reach those goals
@@ -16,19 +16,19 @@ Pageturns is an application which helps you plan and manage your reading. Use it
 
 ### Non-functional Requirements
 
-#### Business - policies
+#### Business
 * If ever monetized, the application should be able to limit the number of books and reading sessions which free users can track
 
-#### Performance - workload and response needs
+#### Performance
 * Ability to handle spikes of activity over weekends and other peaks of leisure time
 
-#### Usability - Colours, logos, online help or docs
+#### Usability
 * UI and user flow must be intuitive enough to not require any external documentation
 
-#### Reliability - acceptability range
+#### Reliability
 * User data should be recoverable/backed-up
 
-#### Security - amount needed, user permissions, encryption
+#### Security
 * Users should have exclusive access their reading log
 
 ## Features
@@ -39,15 +39,15 @@ Pageturns is an application which helps you plan and manage your reading. Use it
   * Persistent user profiles
   * Password recovery
 
-* Ability to add new books for the app to track
-  * Form for entering book information
-
 * Book Tracker View
+  * Display all books the user has added
   * Display reading progress (percentage complete/last page read) for each book
 
 * Reading Log View
   * Display all reading session entries for a specific book
-  * Form for inputting new reading sessions with info like time taken, pages read, and any notes taken
+  * Form for inputting new reading sessions with info like time taken, pages read, and notes
+
+* Ability to perform CRUD operations on books and reading log entries
 
 ### Nice-To-have
 
