@@ -42,12 +42,12 @@ Pageturns is an application which helps you plan and manage your reading. Use it
 * Ability to add new books for the app to track
   * Form for entering book information
 
-* Ability to enter new reading session entries
-  * Form for inputting reading session info like time taken, pages read, and any notes taken
-  * Persistence of reading session data for each user
+* Book Tracker View
+  * Display reading progress (percentage complete/last page read) for each book
 
 * Reading Log View
-  * Display reading progress (percentage complete/last page read) for each book
+  * Display all reading session entries for a specific book
+  * Form for inputting new reading sessions with info like time taken, pages read, and any notes taken
 
 ### Nice-To-have
 
@@ -76,4 +76,8 @@ Pageturns is an application which helps you plan and manage your reading. Use it
 
 ## Entity Relationship Diagram
 
-![PageTurns Entity Relationship Diagram](pageturnsERD.png "Title")
+![PageTurns Entity Relationship Diagram](pageturnsERD.png)
+
+## Prototype
+
+Prototype is viewable at [https://app.moqups.com/nrdNyW0Zo2/view](https://app.moqups.com/nrdNyW0Zo2/view)
