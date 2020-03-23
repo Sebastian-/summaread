@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # Local
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
+    'readingmanager.apps.ReadingmanagerConfig',
 ]
 
 # django-crispy-forms
