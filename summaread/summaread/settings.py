@@ -76,6 +76,7 @@ WSGI_APPLICATION = 'summaread.wsgi.application'
 AUTH_USER_MODEL = 'users.CustomUser'
 
 LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
