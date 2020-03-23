@@ -6,9 +6,12 @@
 
 {% block content %}
     
+    <a href="{% url 'create_book' %}">Add Book</a>
+    <div>
     {% for book in book_list %}
         <p>{{ book.title }}</p>
     {% endfor %}
+    </div>
         
 {% endblock content %}
     

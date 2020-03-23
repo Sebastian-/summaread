@@ -1,5 +1,6 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
 from .models import Book
 
@@ -12,3 +13,14 @@ class BookListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         queryset = Book.objects.filter(user=self.request.user)
         return queryset
+
+
+class CreateBookView(LoginRequiredMixin, CreateView):
+    model = Book
+    fields = ['title', 'author']
+    template_name = 'readingmanager/create_book.html'
+    success_url = reverse_lazy('book_list')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
