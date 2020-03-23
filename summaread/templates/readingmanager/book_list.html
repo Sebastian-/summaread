@@ -1,0 +1,14 @@
+{% extends '_base.html' %}
+
+{% block title %}
+    Books
+{% endblock title %}
+
+{% block content %}
+    
+    {% for book in book_list %}
+        <p>{{ book.title }}</p>
+    {% endfor %}
+        
+{% endblock content %}
+    
