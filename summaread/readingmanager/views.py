@@ -1,4 +1,4 @@
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
@@ -24,3 +24,10 @@ class CreateBookView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+class EditBookView(LoginRequiredMixin, UpdateView):
+    model = Book
+    fields = ['title', 'author']
+    template_name = 'readingmanager/edit_book.html'
+    success_url = reverse_lazy('book_list')

@@ -9,7 +9,10 @@
     <a href="{% url 'create_book' %}">Add Book</a>
     <div>
     {% for book in book_list %}
-        <p>{{ book.title }}</p>
+        <div>
+            <p>{{ book.title }}</p>
+            <a href="{% url 'edit_book' book.pk %}">Edit</a>
+        </div>
     {% endfor %}
     </div>
         
