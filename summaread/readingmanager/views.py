@@ -1,4 +1,4 @@
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
@@ -30,4 +30,9 @@ class EditBookView(LoginRequiredMixin, UpdateView):
     model = Book
     fields = ['title', 'author']
     template_name = 'readingmanager/edit_book.html'
+    success_url = reverse_lazy('book_list')
+
+
+class DeleteBookView(LoginRequiredMixin, DeleteView):
+    model = Book
     success_url = reverse_lazy('book_list')
