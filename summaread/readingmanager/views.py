@@ -1,5 +1,5 @@
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 
 from .models import Book
@@ -26,13 +26,19 @@ class CreateBookView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class EditBookView(LoginRequiredMixin, UpdateView):
+class EditBookView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Book
     fields = ['title', 'author']
     template_name = 'readingmanager/edit_book.html'
     success_url = reverse_lazy('book_list')
 
+    def test_func(self):
+        return self.request.user == self.get_object().user
 
-class DeleteBookView(LoginRequiredMixin, DeleteView):
+
+class DeleteBookView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Book
     success_url = reverse_lazy('book_list')
+
+    def test_func(self):
+        return self.request.user == self.get_object().user
