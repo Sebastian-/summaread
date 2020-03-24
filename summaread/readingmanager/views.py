@@ -72,3 +72,19 @@ class CreateSummaryView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return reverse_lazy('summary_list', args=[self.kwargs['pk']])
+
+
+class EditSummaryView(LoginRequiredMixin, UpdateView):
+    model = Summary
+    pk_url_kwarg = 'summary_pk'
+    fields = ['title', 'Start Page', 'End Page', 'summary']
+    template_name = 'readingmanager/summary_update.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(EditSummaryView, self).get_context_data(**kwargs)
+        context['book'] = Book.objects.filter(
+            pk=self.kwargs['book_pk']).first()
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('summary_list', args=[self.kwargs['book_pk']])
