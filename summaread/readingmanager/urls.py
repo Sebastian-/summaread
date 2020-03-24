@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import BookListView, CreateBookView, EditBookView, DeleteBookView, SummaryListView, CreateSummaryView, EditSummaryView
+from .views import BookListView, CreateBookView, EditBookView, DeleteBookView, SummaryListView, CreateSummaryView, EditSummaryView, DeleteSummaryView
 
 urlpatterns = [
     path('', BookListView.as_view(), name='book_list'),
@@ -12,4 +12,6 @@ urlpatterns = [
          CreateSummaryView.as_view(), name='create_summary'),
     path('<int:book_pk>/summaries/<int:summary_pk>/edit',
          EditSummaryView.as_view(), name='summary_edit'),
+    path('<int:book_pk>/summaries/<int:summary_pk>/delete',
+         DeleteSummaryView.as_view(), name='summary_delete'),
 ]

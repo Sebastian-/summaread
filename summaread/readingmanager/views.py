@@ -88,3 +88,17 @@ class EditSummaryView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('summary_list', args=[self.kwargs['book_pk']])
+
+
+class DeleteSummaryView(LoginRequiredMixin, DeleteView):
+    model = Summary
+    pk_url_kwarg = 'summary_pk'
+
+    def get_context_data(self, **kwargs):
+        context = super(DeleteSummaryView, self).get_context_data(**kwargs)
+        context['book'] = Book.objects.filter(
+            pk=self.kwargs['book_pk']).first()
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('summary_list', args=[self.kwargs['book_pk']])

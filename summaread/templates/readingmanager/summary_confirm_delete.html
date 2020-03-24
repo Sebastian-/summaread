@@ -1,0 +1,15 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Delete Summary
+{% endblock title %}
+
+{% block content %}
+    <a href="{% url 'summary_list' book.pk %}">Back</a>
+    <form method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to remove the summary titled "{{ object.title }}" for {{ book.title }}?</p>
+        <input class="btn btn-danger" type="submit" value="Confirm">
+    </form>
+{% endblock content %}
