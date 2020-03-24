@@ -21,6 +21,7 @@ class Summary(models.Model):
         related_name='book',
     )
     date = models.DateTimeField(auto_now=True)
+    title = models.CharField(max_length=300)
     startPage = models.IntegerField(name='Start Page')
     endPage = models.IntegerField(name='End Page')
     summary = models.TextField()
