@@ -1,11 +1,11 @@
 {% extends '_base.html' %}
 
 {% block title %}
-    Summaries for {{ summary_list.0.book.title }}
+    Summaries for {{ book.title }}
 {% endblock title %}
 
 {% block content %}
-    <h2>Summaries for {{ summary_list.0.book.title }}</h2>
+    <h2>Summaries for {{ book.title }}</h2>
     
     <div>
     {% for summary in summary_list %}

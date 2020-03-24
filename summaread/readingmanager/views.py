@@ -1,4 +1,4 @@
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 
@@ -44,11 +44,13 @@ class DeleteBookView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return self.request.user == self.get_object().user
 
 
-class SummaryListView(LoginRequiredMixin, ListView):
+class SummaryListView(LoginRequiredMixin, TemplateView):
     model = Summary
-    context_object_name = "summary_list"
     template_name = "readingmanager/summary_list.html"
 
-    def get_queryset(self):
-        queryset = Summary.objects.filter(book=self.kwargs['pk'])
-        return queryset
+    def get_context_data(self, **kwargs):
+        context = super(SummaryListView, self).get_context_data(**kwargs)
+        context['book'] = Book.objects.filter(pk=self.kwargs['pk']).first()
+        context['summary_list'] = Summary.objects.filter(
+            book=self.kwargs['pk'])
+        return context
