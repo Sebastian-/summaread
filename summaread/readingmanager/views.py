@@ -2,7 +2,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 
-from .models import Book
+from .models import Book, Summary
 
 
 class BookListView(LoginRequiredMixin, ListView):
@@ -42,3 +42,13 @@ class DeleteBookView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         return self.request.user == self.get_object().user
+
+
+class SummaryListView(LoginRequiredMixin, ListView):
+    model = Summary
+    context_object_name = "summary_list"
+    template_name = "readingmanager/summary_list.html"
+
+    def get_queryset(self):
+        queryset = Summary.objects.filter(book=self.kwargs['pk'])
+        return queryset
