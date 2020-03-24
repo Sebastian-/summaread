@@ -1,8 +1,8 @@
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 
-from .models import Book
+from .models import Book, Summary
 
 
 class BookListView(LoginRequiredMixin, ListView):
@@ -42,3 +42,63 @@ class DeleteBookView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         return self.request.user == self.get_object().user
+
+
+class SummaryListView(LoginRequiredMixin, TemplateView):
+    model = Summary
+    template_name = "readingmanager/summary_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(SummaryListView, self).get_context_data(**kwargs)
+        context['book'] = Book.objects.filter(pk=self.kwargs['pk']).first()
+        context['summary_list'] = Summary.objects.filter(
+            book=self.kwargs['pk'])
+        return context
+
+
+class CreateSummaryView(LoginRequiredMixin, CreateView):
+    model = Summary
+    fields = ['title', 'Start Page', 'End Page', 'summary']
+    template_name = 'readingmanager/summary_create.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CreateSummaryView, self).get_context_data(**kwargs)
+        context['book'] = Book.objects.filter(pk=self.kwargs['pk']).first()
+        return context
+
+    def form_valid(self, form):
+        form.instance.book = Book.objects.filter(pk=self.kwargs['pk']).first()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('summary_list', args=[self.kwargs['pk']])
+
+
+class EditSummaryView(LoginRequiredMixin, UpdateView):
+    model = Summary
+    pk_url_kwarg = 'summary_pk'
+    fields = ['title', 'Start Page', 'End Page', 'summary']
+    template_name = 'readingmanager/summary_update.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(EditSummaryView, self).get_context_data(**kwargs)
+        context['book'] = Book.objects.filter(
+            pk=self.kwargs['book_pk']).first()
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('summary_list', args=[self.kwargs['book_pk']])
+
+
+class DeleteSummaryView(LoginRequiredMixin, DeleteView):
+    model = Summary
+    pk_url_kwarg = 'summary_pk'
+
+    def get_context_data(self, **kwargs):
+        context = super(DeleteSummaryView, self).get_context_data(**kwargs)
+        context['book'] = Book.objects.filter(
+            pk=self.kwargs['book_pk']).first()
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('summary_list', args=[self.kwargs['book_pk']])

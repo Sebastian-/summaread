@@ -1,0 +1,22 @@
+{% extends '_base.html' %}
+
+{% block title %}
+    Summaries for {{ book.title }}
+{% endblock title %}
+
+{% block content %}
+    <h2>Summaries for {{ book.title }}</h2>
+    <a href="{% url 'create_summary' book.pk %}">New Summary</a>
+
+    <div>
+    {% for summary in summary_list %}
+        <div>
+            <h3>{{ summary.title }}</h3>
+            <p>{{ summary.summary }}</p>
+            <a href="{% url 'summary_edit' book.pk summary.pk %}">Edit</a>
+            <a href="{% url 'summary_delete' book.pk summary.pk %}">Delete</a>
+        </div>
+    {% endfor %}
+    </div>
+        
+{% endblock content %}

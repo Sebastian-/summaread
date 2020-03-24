@@ -11,6 +11,7 @@
     {% for book in book_list %}
         <div>
             <p>{{ book.title }}</p>
+            <a href="{% url 'summary_list' book.pk %}">Summaries</a>
             <a href="{% url 'edit_book' book.pk %}">Edit</a>
             <a href="{% url 'delete_book' book.pk %}">Delete</a>
         </div>
