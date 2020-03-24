@@ -1,0 +1,21 @@
+{% extends '_base.html' %}
+
+{% block title %}
+    Books
+{% endblock title %}
+
+{% block content %}
+    
+    <a href="{% url 'create_book' %}">Add Book</a>
+    <div>
+    {% for book in book_list %}
+        <div>
+            <p>{{ book.title }}</p>
+            <a href="{% url 'edit_book' book.pk %}">Edit</a>
+            <a href="{% url 'delete_book' book.pk %}">Delete</a>
+        </div>
+    {% endfor %}
+    </div>
+        
+{% endblock content %}
+    
