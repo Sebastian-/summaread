@@ -54,3 +54,21 @@ class SummaryListView(LoginRequiredMixin, TemplateView):
         context['summary_list'] = Summary.objects.filter(
             book=self.kwargs['pk'])
         return context
+
+
+class CreateSummaryView(LoginRequiredMixin, CreateView):
+    model = Summary
+    fields = ['title', 'Start Page', 'End Page', 'summary']
+    template_name = 'readingmanager/summary_create.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CreateSummaryView, self).get_context_data(**kwargs)
+        context['book'] = Book.objects.filter(pk=self.kwargs['pk']).first()
+        return context
+
+    def form_valid(self, form):
+        form.instance.book = Book.objects.filter(pk=self.kwargs['pk']).first()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('summary_list', args=[self.kwargs['pk']])

@@ -6,7 +6,8 @@
 
 {% block content %}
     <h2>Summaries for {{ book.title }}</h2>
-    
+    <a href="{% url 'create_summary' book.pk %}">New Summary</a>
+
     <div>
     {% for summary in summary_list %}
         <div>
