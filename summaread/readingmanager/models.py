@@ -25,3 +25,6 @@ class Summary(models.Model):
     startPage = models.IntegerField(name='Start Page')
     endPage = models.IntegerField(name='End Page')
     summary = models.TextField()
+
+    class Meta:
+        verbose_name_plural = "summaries"
