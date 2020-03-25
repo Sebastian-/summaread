@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'summaread.wsgi.application'
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'book_list'
 LOGOUT_REDIRECT_URL = 'home'
 
 # Database
