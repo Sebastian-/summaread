@@ -9,10 +9,12 @@
 {% block content %}
     <h1 class="text-center">Welcome</h1>
     
-    {% if user.is_authenticated %}
-        <p>Hi {{ user.email }}!</p>
-    {% else %}
-        <p>You are not logged in</p>
-    {% endif %}
+    <div class="text-center">
+        {% if user.is_authenticated %}
+            <p>Hi {{ user.email }}!</p>
+        {% else %}
+            <p>You are not logged in</p>
+        {% endif %}
+    </div>
         
 {% endblock content %}

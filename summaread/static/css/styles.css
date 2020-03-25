@@ -1,3 +1,10 @@
 h1 {
   color: royalblue;
 }
+
+.list-entry {
+  background-color: #f3f3f3;
+  border: 1px solid #d3d3d3;
+  padding: 1em;
+  margin-bottom: 2em;
+}

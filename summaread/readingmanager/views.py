@@ -44,7 +44,7 @@ class DeleteBookView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return self.request.user == self.get_object().user
 
 
-class SummaryListView(LoginRequiredMixin, TemplateView):
+class SummaryListView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     model = Summary
     template_name = "readingmanager/summary_list.html"
 
@@ -55,8 +55,11 @@ class SummaryListView(LoginRequiredMixin, TemplateView):
             book=self.kwargs['pk'])
         return context
 
+    def test_func(self):
+        return self.request.user == Book.objects.filter(pk=self.kwargs['pk']).first().user
 
-class CreateSummaryView(LoginRequiredMixin, CreateView):
+
+class CreateSummaryView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Summary
     fields = ['title', 'Start Page', 'End Page', 'summary']
     template_name = 'readingmanager/summary_create.html'
@@ -73,8 +76,11 @@ class CreateSummaryView(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse_lazy('summary_list', args=[self.kwargs['pk']])
 
+    def test_func(self):
+        return self.request.user == self.get_object().book.user
 
-class EditSummaryView(LoginRequiredMixin, UpdateView):
+
+class EditSummaryView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Summary
     pk_url_kwarg = 'summary_pk'
     fields = ['title', 'Start Page', 'End Page', 'summary']
@@ -89,8 +95,11 @@ class EditSummaryView(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         return reverse_lazy('summary_list', args=[self.kwargs['book_pk']])
 
+    def test_func(self):
+        return self.request.user == self.get_object().book.user
 
-class DeleteSummaryView(LoginRequiredMixin, DeleteView):
+
+class DeleteSummaryView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Summary
     pk_url_kwarg = 'summary_pk'
 
@@ -102,3 +111,6 @@ class DeleteSummaryView(LoginRequiredMixin, DeleteView):
 
     def get_success_url(self):
         return reverse_lazy('summary_list', args=[self.kwargs['book_pk']])
+
+    def test_func(self):
+        return self.request.user == self.get_object().book.user
