@@ -22,8 +22,8 @@ class Summary(models.Model):
     )
     date = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=300)
-    startPage = models.IntegerField(name='Start Page')
-    endPage = models.IntegerField(name='End Page')
+    start = models.IntegerField()
+    end = models.IntegerField()
     summary = models.TextField()
 
     class Meta:

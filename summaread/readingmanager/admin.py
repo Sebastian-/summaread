@@ -8,7 +8,7 @@ class BookAdmin(admin.ModelAdmin):
 
 
 class SummaryAdmin(admin.ModelAdmin):
-    list_display = ("book", "title", "Start Page", "End Page")
+    list_display = ("book", "title", "start", "end")
 
 
 admin.site.register(Book, BookAdmin)

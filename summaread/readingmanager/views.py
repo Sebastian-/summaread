@@ -61,7 +61,7 @@ class SummaryListView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
 
 class CreateSummaryView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Summary
-    fields = ['title', 'Start Page', 'End Page', 'summary']
+    fields = ['title', 'start', 'end', 'summary']
     template_name = 'readingmanager/summary_create.html'
 
     def get_context_data(self, **kwargs):
@@ -83,7 +83,7 @@ class CreateSummaryView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 class EditSummaryView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Summary
     pk_url_kwarg = 'summary_pk'
-    fields = ['title', 'Start Page', 'End Page', 'summary']
+    fields = ['title', 'start', 'end', 'summary']
     template_name = 'readingmanager/summary_update.html'
 
     def get_context_data(self, **kwargs):
