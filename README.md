@@ -1,5 +1,7 @@
 # Summaread
 
+[Video Demo](https://youtu.be/Jff1fWIDCn4)
+
 ## Elevator Pitch
 
 Summaread is an application which helps you plan and manage your reading. Use it to track your reading progress and accomplish your reading goals! Each reading session can be logged and archived with the app, providing you with a valuable record of your notes and thoughts, as well as statistics regarding your progress. Useful information such as reading speed, and pages read over time can be inferred from your reading logs which can then help in planning your future reading goals.
