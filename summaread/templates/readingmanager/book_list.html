@@ -6,14 +6,15 @@
 
 {% block content %}
     
-    <a href="{% url 'create_book' %}">Add Book</a>
+    <a class="btn btn-outline-success mb-4" href="{% url 'create_book' %}">+ Add Book</a>
     <div>
     {% for book in book_list %}
-        <div>
-            <p>{{ book.title }}</p>
-            <a href="{% url 'summary_list' book.pk %}">Summaries</a>
-            <a href="{% url 'edit_book' book.pk %}">Edit</a>
-            <a href="{% url 'delete_book' book.pk %}">Delete</a>
+        <div class="list-entry">
+            <h2>{{ book.title }}</h2>
+            <p>{{ book.author }}</p>
+            <a class="btn btn-outline-primary mr-3" href="{% url 'summary_list' book.pk %}">Summaries</a>
+            <a class="btn btn-outline-secondary mr-3" href="{% url 'edit_book' book.pk %}">Edit</a>
+            <a class="btn btn-outline-danger" href="{% url 'delete_book' book.pk %}">Delete</a>
         </div>
     {% endfor %}
     </div>
